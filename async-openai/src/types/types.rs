@@ -312,6 +312,8 @@ pub enum Image {
 pub struct ImagesResponse {
     pub created: u32,
     pub data: Vec<std::sync::Arc<Image>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub revised_prompt: Option<String>,
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
