@@ -203,8 +203,8 @@ impl ImagesResponse {
 impl Image {
     async fn save<P: AsRef<Path>>(&self, dir: P) -> Result<PathBuf, OpenAIError> {
         match self {
-            Image::Url(url) => download_url(url, dir).await,
-            Image::B64Json(b64_json) => save_b64(b64_json, dir).await,
+            Image::Url{url,..} => download_url(url, dir).await,
+            Image::B64Json{b64_json,..} => save_b64(b64_json, dir).await,
         }
     }
 }
