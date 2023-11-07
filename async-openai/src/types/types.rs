@@ -277,6 +277,10 @@ pub struct CreateImageRequest {
     /// A text description of the desired image(s). The maximum length is 1000 characters.
     pub prompt: String,
 
+    /// ID of the model to use. For example `dall-e-2` or `dall-e-3`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub model: Option<String>,
+
     /// The number of images to generate. Must be between 1 and 10.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub n: Option<u8>, // min:1 max:10 default:1
